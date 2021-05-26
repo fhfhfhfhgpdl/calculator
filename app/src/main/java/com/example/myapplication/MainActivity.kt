@@ -18,74 +18,65 @@ class MainActivity : AppCompatActivity() {
         val sub = findViewById<Button>(R.id.subbutton)
         val mul = findViewById<Button>(R.id.mulbutton)
         val div = findViewById<Button>(R.id.divbutton)
-        var calculate = 0                                          //result에 들어감
-        var total = 0                       //변수명 잘못지었다... 끝내고 알아챔...
 
 
-        result.text = "$calculate"
+
+        result.text = "0"
         cal.text = "-"
 
 
 
         fun add(a: Int, b: Int): Int {
-            calculate = a + b
-            return 0
+            return a + b
         }
 
         fun sub(a: Int, b: Int): Int {
-            calculate = a - b
-            return 0
+            return a - b
         }
 
         fun mul(a: Int, b: Int): Int {
-            calculate = a * b
-            return 0
+            return a * b
         }
 
         fun div(a: Int, b: Int): Int {
-            calculate = a / b
-            return 0
+            return a / b
         }
 
 
 
         add.setOnClickListener {
-            val a: Int = Integer.parseInt(findViewById<EditText>(R.id.number1).text.toString())
-            val b: Int = Integer.parseInt(findViewById<EditText>(R.id.number2).text.toString())
+            val a: Int = findViewById<EditText>(R.id.number1).text.toString().toInt()
+            val b: Int = findViewById<EditText>(R.id.number2).text.toString().toInt()
 
-            total=add(a, b)
             cal.text = "$a + $b"
-            result.text = "$calculate"
+            result.text = "${add(a, b)}"
         }
         sub.setOnClickListener {
-            val a: Int = Integer.parseInt(findViewById<EditText>(R.id.number1).text.toString())
-            val b: Int = Integer.parseInt(findViewById<EditText>(R.id.number2).text.toString())
+            val a: Int = findViewById<EditText>(R.id.number1).text.toString().toInt()
+            val b: Int = findViewById<EditText>(R.id.number2).text.toString().toInt()
 
-            total= sub(a, b)
             cal.text = "$a - $b"
-            result.text = "$calculate"
+            result.text = "${sub(a, b)}"
         }
         mul.setOnClickListener {
-            val a: Int = Integer.parseInt(findViewById<EditText>(R.id.number1).text.toString())
-            val b: Int = Integer.parseInt(findViewById<EditText>(R.id.number2).text.toString())
+            val a: Int = findViewById<EditText>(R.id.number1).text.toString().toInt()
+            val b: Int = findViewById<EditText>(R.id.number2).text.toString().toInt()
 
-            total = mul(a, b)
             cal.text = "$a * $b"
-            result.text = "$calculate"
+            result.text = "${mul(a, b)}"
         }
 
 
         div.setOnClickListener {
-            val a: Int = Integer.parseInt(findViewById<EditText>(R.id.number1).text.toString())
-            val b: Int = Integer.parseInt(findViewById<EditText>(R.id.number2).text.toString())
+            val a: Int = findViewById<EditText>(R.id.number1).text.toString().toInt()
+            val b: Int = findViewById<EditText>(R.id.number2).text.toString().toInt()
 
-            when (a) {
+            when (b) {
                 0 -> cal.text = "div/0"
 
                 else -> {
-                    total = div(a, b)
                     cal.text = "$a / $b"
-                    result.text = "$calculate"
+                    result.text = "${div(a, b)}"
                 }
             }
         }
